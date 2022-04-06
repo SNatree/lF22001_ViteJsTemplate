@@ -3,7 +3,7 @@ import { stringify } from 'querystring'
 import routes from '../routes'
 import LocalStorageService from './LocalStorageService'
 const localStorageService = LocalStorageService.getService()
-// const querystring = require('querystring');
+
 const baseURL = `http://${import.meta.env.VITE_ACC_API_HOST}:${import.meta.env.VITE_ACC_API_PORT}`
 const defaultHeaders = { 'content-type': 'application/x-www-form-urlencoded', token: localStorageService.getItem('mfc_access_token') }
 // axios.defaults.headers.common = { ...axios.defaults.headers.common, ...defaultHeaders }
@@ -38,27 +38,6 @@ axios.interceptors.response.use(
             routes.push('/login')
             return Promise.reject(error)
         }
-        // if (error.response.status === 401 && error.response.data['detail'].toLowerCase() === 'token notfound') {
-        //     routes.push('/login')
-        //     return Promise.reject(error)
-        // }
-        // if (error.response.status === 401 && !originalRequest._retry) {
-        //     console.log('retry')
-        //     originalRequest._retry = true;
-        //     const refreshToken = localStorageService.getRefreshToken();
-        //     return axios.post('/auth/token',
-        //         {
-        //             "refresh_token": refreshToken
-        //         })
-        //         .then(res => {
-        //             if (res.status === 201) {
-        //                 localStorageService.setToken(res.data);
-        //                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorageService.getAccessToken();
-        //                 return axios(originalRequest);
-        //             }
-        //         })
-        // }
-        // return axios(originalRequest)
         return Promise.reject(error)
     }
 )
