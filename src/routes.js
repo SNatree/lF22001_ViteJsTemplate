@@ -1,19 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-// const auth = ({ to, from, next }) => {
-//     if (to.meta.requiresAuth) {
-//         if (!localStorage.getItem('access_token')) {
-//             return {
-//                 path: '/login',
-//                 // save the location we were at to come back later
-//                 // query: { redirect: to.fullPath },
-//             }
-//         }
-//     }
-
-//     return next()
-// }
-
 var routes = [
     {
         // will match everything
@@ -90,35 +75,4 @@ router.beforeEach((to, from) => {
 })
 
 export default router
-// export default routes
 
-// router.beforeEach((to, from) => {
-//     // console.log('beforeEach', to, to.meta.requiresAuth)
-//     // instead of having to check every route record with
-//     // to.matched.some(record => record.meta.requiresAuth)
-//     if (to.meta.requiresAuth) {
-//         // this route requires auth, check if logged in
-//         // if not, redirect to login page.
-//         if (!localStorage.getItem('access_token')) {
-//             return {
-//                 path: '/login',
-//                 // save the location we were at to come back later
-//                 // query: { redirect: to.fullPath },
-//             }
-//         }
-//     } else {
-//         if (localStorage.getItem('access_token')) {
-//             return {
-//                 path: '/',
-//             }
-//         }
-//     }
-// })
-// // router.afterEach((to, from) => {
-// //     console.log('afterEach', to, to.meta.requiresAuth)
-// //     if (!to.meta.requiresAuth) {
-// //         return {
-// //             path: '/',
-// //         }
-// //     }
-// // })
